@@ -43,3 +43,5 @@ if managers.preplanning and managers.job and managers.network then
 	    sp_file:close()
     end
 end
+
+managers.chat:send_message(1, username, "Preplanning saved.")
