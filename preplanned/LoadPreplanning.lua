@@ -17,3 +17,5 @@ if managers.preplanning and managers.job and managers.network then
 	local sp_current_level_id =  managers.job:current_real_job_id() .. "_" .. managers.job:current_level_id()
 	dofile("mods\\preplanned\\preplanning\\" .. sp_current_level_id .. ".lua")
 end
+
+managers.chat:send_message(1, username, "Preplanning loaded.")
