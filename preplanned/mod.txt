@@ -1,31 +1,27 @@
 {
-	"name" : "Preplanning Saver",
-	"description" : "Preplanning Saver",
-	"author" : "ThatGuyFromBreakingBad, DerDoctorFelix",
-	"contact" : "https://github.com/thatguyfrombb/",
-	"version" : "1.28"
-
-	"keybinds" : [
-    {
-        "keybind_id" : "keybind_presave",
-        "name" : "Presave Keybind",
-        "description" : "Presave Keybind",
-        "script_path" : "SavePreplanning.lua",
-        "run_in_menu" : true,
-        "run_in_game" : true,
-        "localized" : false
-    },
-    {
-        "keybind_id" : "keybind_preload",
-        "name" : "Preload Keybind",
-        "description" : "Preload Keybind",
-        "script_path" : "LoadPreplanning.lua",
-        "run_in_menu" : true,
-        "run_in_game" : true,
-        "localized" : false
-    }
-
-	]
-
-
+    "name" : "Preplanning Saver",
+    "description" : "Preplanning Saver",
+    "author" : "ThatGuyFromBreakingBad, DerDoctorFelix, djmattyg007",
+    "contact" : "https://github.com/thatguyfrombb/",
+    "version" : "1.28",
+    "keybinds" : [
+        {
+            "keybind_id" : "keybind_presave",
+            "name" : "Preplanning Save Keybind",
+            "description" : "Preplanning Save Keybind",
+            "script_path" : "SavePreplanning.lua",
+            "run_in_menu" : true,
+            "run_in_game" : true,
+            "localized" : false
+        },
+        {
+            "keybind_id" : "keybind_preload",
+            "name" : "Preplanning Load Keybind",
+            "description" : "Preplanning Load Keybind",
+            "script_path" : "LoadPreplanning.lua",
+            "run_in_menu" : true,
+            "run_in_game" : true,
+            "localized" : false
+        }
+    ]
 }
