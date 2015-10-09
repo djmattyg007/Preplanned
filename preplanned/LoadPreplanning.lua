@@ -15,7 +15,13 @@ end
 
 if managers.preplanning and managers.job and managers.network then
     local sp_current_level_id =  managers.job:current_real_job_id() .. "_" .. managers.job:current_level_id()
-    dofile("mods\\preplanned\\preplanning\\" .. sp_current_level_id .. ".lua")
+    local save_filename = SavePath:gsub("/", "\\") .. "preplanning\\" .. sp_current_level_id .. ".lua"
+    local sp_file = io.open(save_filename, "r")
+    if sp_file == nil then
+        managers.chat:send_message(1, username, "No saved preplanning.")
+    else
+        sp_file:close()
+        dofile(save_filename)
+        managers.chat:send_message(1, username, "Preplanning loaded.")
+    end
 end
-
-managers.chat:send_message(1, username, "Preplanning loaded.")

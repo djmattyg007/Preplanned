@@ -18,12 +18,23 @@ function sp_toVoteString(sp_votetype, sp_id)
     return "Vote(" .. sp_formatString(sp_votetype) .. ", " .. sp_formatString(sp_id) .. ")"
 end
 
+function sp_ensureSavePathExists()
+    local fullpath = SavePath:gsub("/", "\\") .. "preplanning"
+    log("SavePreplanning: Creating " .. fullpath)
+    os.execute("mkdir " .. fullpath)
+end
+
 if managers.preplanning and managers.job and managers.network then
     local sp_peer_id = managers.network:session():local_peer():id()
     local sp_current_level_id = managers.job:current_real_job_id() .. "_" .. managers.job:current_level_id()
     if sp_current_level_id and sp_peer_id then
         local sp_endl = "\n"
-        local sp_file = io.open("mods\\preplanned\\preplanning\\" .. sp_current_level_id .. ".lua", "w")
+        local save_filename = SavePath .. "preplanning\\" .. sp_current_level_id .. ".lua"
+        local sp_file = io.open(save_filename, "w")
+        if sp_file == nil then
+            sp_ensureSavePathExists()
+            sp_file = io.open(save_filename, "w")
+        end
         local sp_reserved_mission_elements = managers.preplanning._reserved_mission_elements
         if sp_reserved_mission_elements then
             for sp_id, sp_reserved_mission_element in pairs(sp_reserved_mission_elements) do
@@ -41,7 +52,6 @@ if managers.preplanning and managers.job and managers.network then
             end
         end
         sp_file:close()
+        managers.chat:send_message(1, username, "Preplanning saved.")
     end
 end
-
-managers.chat:send_message(1, username, "Preplanning saved.")
